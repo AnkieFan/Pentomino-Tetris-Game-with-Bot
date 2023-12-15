@@ -23,7 +23,7 @@ public class Layer_Game extends Layer {
      */
     @Override
     protected void createWindow(Graphics g) {
-        Image board = new ImageIcon("Graphics/Windows/Board.jpg").getImage();
+        Image board = new ImageIcon("Pentomino/Graphics/Windows/Board.jpg").getImage();
         g.drawImage(board, x, y, w, h, null);
     }
 
@@ -35,7 +35,7 @@ public class Layer_Game extends Layer {
         if (!gameDataManager.isStart())
             return;
         // Print grids
-        String docStr = "Graphics/Game/block" + gameDataManager.getActPent().getPentIndex() + ".png";
+        String docStr = "Pentomino/Graphics/Game/block" + gameDataManager.getActPent().getPentIndex() + ".png";
         Image blocki = new ImageIcon(docStr).getImage();
         Point[] points = this.gameDataManager.getActPent().getActPoints();
         for (int i = 0; i < points.length; i++) {
@@ -50,7 +50,7 @@ public class Layer_Game extends Layer {
      */
     private void drawMap(Graphics g) {
         // Print map
-        Image block = new ImageIcon("Graphics/Game/block-1.png").getImage();
+        Image block = new ImageIcon("Pentomino/Graphics/Game/block-1.png").getImage();
         boolean[][] map = this.gameDataManager.getGameMap();
         for (int y = 0; y < map.length; y++) {
             for (int x = 0; x < map[y].length; x++) {

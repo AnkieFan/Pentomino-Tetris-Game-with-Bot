@@ -8,6 +8,10 @@ import java.util.Stack;
  */
 public class DancingLinksX {
 
+    public static void main(String[] args) {
+        new DancingLinksX();
+    }
+
     // The data structure used in DLX algorithm
     private DancingLinksList dancingLinksList;
     // A stack to store answer (for recursion and backtracking)
@@ -296,12 +300,12 @@ public class DancingLinksX {
                         for (int j = 1; j < temp.length; j++) {
                             temp[j]++;
                         }
-                    } else if (breakCase == 1) { // The pentomino reached the end of a row
+                    } else if (breakCase == 1) { // The parcel reached the end of a row
                         for (int j = 1; j < rowPointer.length; j++) {
                             rowPointer[j] += length;
                         }
                         temp = arrayCopy(rowPointer);
-                    } else if (breakCase == 2) { // The pentomino reached the end of a layer
+                    } else if (breakCase == 2) { // The parcel reached the end of a layer
                         for (int j = 1; j < layerPointer.length; j++) {
                             layerPointer[j] += length * width;
                         }
@@ -315,7 +319,7 @@ public class DancingLinksX {
 
         /**
          * Add a line to the bottom of the list
-         * @param object the placement of a parcel/pentomino
+         * @param object the placement of a parcel
          */
         public void addLine(int[] object) {
             if (!canAdd(object))
@@ -356,7 +360,7 @@ public class DancingLinksX {
 
         /**
          * Check if this placement is available in the space
-         * @param parcel the placement of a parcel/pentomino
+         * @param parcel the placement of a parcel
          * @return if the current one can be added in the list
          */
         public boolean canAdd(int[] parcel) {
@@ -375,7 +379,7 @@ public class DancingLinksX {
 
         /**
          * To check the line changing/ layer changing situation
-         * @param parcel the placement of a parcel/pentomino
+         * @param parcel the placement of a parcel
          * @return 0: no need to change  1: turn to another line  2: turn to another layer  3:the end of loop
          */
         public int lineBreak(int[] parcel) {

@@ -22,7 +22,7 @@ public class Frame_SaveScore extends JFrame {
         this.setTitle("Save?");
         this.setSize(250, 180);
 
-        this.setIconImage(new ImageIcon("Graphics/logo3.png").getImage());
+        this.setIconImage(new ImageIcon("Pentomino/Graphics/logo3.png").getImage());
 
         this.setLocationRelativeTo(null);
 
@@ -86,7 +86,7 @@ public class Frame_SaveScore extends JFrame {
         this.btnOK = new JButton();
         this.btnOK.setBorderPainted(false);
         this.btnOK.setContentAreaFilled(false);
-        this.btnOK.setIcon(new ImageIcon("Graphics/Buttons/ok.png"));
+        this.btnOK.setIcon(new ImageIcon("Pentomino/Graphics/Buttons/ok.png"));
         // Create the south panel
         JPanel south = new JPanel(new FlowLayout(FlowLayout.CENTER));
         // Add button in south panel

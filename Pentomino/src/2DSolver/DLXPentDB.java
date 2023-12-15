@@ -1,8 +1,8 @@
 import java.util.Random;
 
-public class PentDB {
+public class DLXPentDB {
     public int[][] pieces;
-    public PentDB(int length, int width) {
+    public DLXPentDB(int length, int width) {
         this.pieces = new int[][]{
                 {4, 2, length + 2, length * 2 + 1, length * 2 + 2, length * 2 + 3},// The "T"
                 {4, 3, length + 1, length + 2, length + 3, length * 2 + 3},

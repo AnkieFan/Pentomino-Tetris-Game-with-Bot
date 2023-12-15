@@ -18,7 +18,7 @@ public class Layer_Next extends Layer {
      */
     @Override
     protected void createWindow(Graphics g) {
-        Image next = new ImageIcon("Graphics/Windows/Next.png").getImage();
+        Image next = new ImageIcon("Pentomino/Graphics/Windows/Next.png").getImage();
         g.drawImage(next, x, y, w, h, null);
     }
 
@@ -28,7 +28,7 @@ public class Layer_Next extends Layer {
      */
     public void paint(Graphics g) {
         if (this.gameDataManager.isStart()) {
-            String docStr = "Graphics/Game/block" + gameDataManager.getNext() + ".png";
+            String docStr = "Pentomino/Graphics/Game/block" + gameDataManager.getNext() + ".png";
             Image blocki = new ImageIcon(docStr).getImage();
 
             // Print grids

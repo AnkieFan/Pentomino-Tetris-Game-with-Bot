@@ -55,8 +55,8 @@ public class Panel_Game extends JPanel {
      * @return current icon
      */
     public ImageIcon getButton(boolean b) {
-        ImageIcon pauseIm = new ImageIcon("Graphics/Buttons/Pause.png");
-        ImageIcon continueIm = new ImageIcon("Graphics/Buttons/Restart.png");
+        ImageIcon pauseIm = new ImageIcon("Pentomino/Graphics/Buttons/Pause.png");
+        ImageIcon continueIm = new ImageIcon("Pentomino/Graphics/Buttons/Restart.png");
         return b ? continueIm : pauseIm;
     }
 

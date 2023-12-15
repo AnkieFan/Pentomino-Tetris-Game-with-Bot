@@ -21,7 +21,7 @@ public class Frame_MainPage extends JFrame implements ActionListener {
         this.setLayout(null);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setIconImage(new ImageIcon("Graphics/logo1.png").getImage());
+        this.setIconImage(new ImageIcon("Pentomino/Graphics/logo1.png").getImage());
 
         // Make the window in the middle
         this.setLocationRelativeTo(null);
@@ -36,7 +36,7 @@ public class Frame_MainPage extends JFrame implements ActionListener {
      * Initialize the background picture
      */
     public void initBG() {
-        ImageIcon mainBG = new ImageIcon("Graphics/Windows/mainBG.jpg");
+        ImageIcon mainBG = new ImageIcon("Pentomino/Graphics/Windows/mainBG.jpg");
         labelBG = new JLabel(mainBG);
         labelBG.setBounds(0, 0, mainBG.getIconWidth(), mainBG.getIconHeight());
         this.getLayeredPane().add(labelBG, new Integer(Integer.MIN_VALUE));
@@ -49,8 +49,8 @@ public class Frame_MainPage extends JFrame implements ActionListener {
      */
     private void initButtons() {
         //create start button
-        ImageIcon start = new ImageIcon("Graphics/Buttons/Start.png");
-        ImageIcon start2 = new ImageIcon("Graphics/Buttons/Start2.png");
+        ImageIcon start = new ImageIcon("Pentomino/Graphics/Buttons/Start.png");
+        ImageIcon start2 = new ImageIcon("Pentomino/Graphics/Buttons/Start2.png");
         btnStart = new JButton();
         btnStart.setIcon(start);
         btnStart.setRolloverIcon(start2);
@@ -61,8 +61,8 @@ public class Frame_MainPage extends JFrame implements ActionListener {
         this.add(btnStart);
 
         // Create bot button
-        ImageIcon bot = new ImageIcon("Graphics/Buttons/Bot.png");
-        ImageIcon bot1 = new ImageIcon("Graphics/Buttons/Bot2.png");
+        ImageIcon bot = new ImageIcon("Pentomino/Graphics/Buttons/Bot.png");
+        ImageIcon bot1 = new ImageIcon("Pentomino/Graphics/Buttons/Bot2.png");
         btnBot = new JButton();
         btnBot.setIcon(bot);
         btnBot.setRolloverIcon(bot1);

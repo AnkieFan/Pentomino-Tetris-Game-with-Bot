@@ -10,7 +10,7 @@ import java.awt.*;
  */
 public abstract class Layer {
     private static final int frameWidth = 5;
-    private static final Image window = new ImageIcon("Graphics/window.png").getImage();
+    private static final Image window = new ImageIcon("Pentomino/Graphics/window.png").getImage();
     protected GameDataManager gameDataManager = null;
 
     protected int x; // The left-top position x value

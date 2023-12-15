@@ -6,7 +6,7 @@ import java.awt.*;
  * Score board part in panel.
  */
 public class Layer_Score extends Layer {
-    protected Image scoreIm = new ImageIcon("Graphics/Strings/Score.png").getImage();
+    protected Image scoreIm = new ImageIcon("Pentomino/Graphics/Strings/Score.png").getImage();
 
 
     public Layer_Score(int x, int y, int w, int h) {
@@ -19,7 +19,7 @@ public class Layer_Score extends Layer {
      */
     @Override
     protected void createWindow(Graphics g) {
-        Image score = new ImageIcon("Graphics/Windows/Score.png").getImage();
+        Image score = new ImageIcon("Pentomino/Graphics/Windows/Score.png").getImage();
         g.drawImage(score, x, y, w, h, null);
     }
 

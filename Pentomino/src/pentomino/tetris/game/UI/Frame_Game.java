@@ -1,7 +1,6 @@
 package UI;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * The game page.
@@ -26,7 +25,7 @@ public class Frame_Game extends JFrame{
         this.setLocationRelativeTo(null);
 
         // Set frame icon
-        this.setIconImage(new ImageIcon("Graphics/logo2.png").getImage());
+        this.setIconImage(new ImageIcon("Pentomino/Graphics/logo2.png").getImage());
         this.setContentPane(panelGame);
         //Set default visible
         this.setVisible(false);

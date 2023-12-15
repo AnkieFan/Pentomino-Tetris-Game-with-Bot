@@ -19,7 +19,7 @@ public class Layer_Rank extends Layer {
      */
     @Override
     protected void createWindow(Graphics g) {
-        Image rank = new ImageIcon("Graphics/Windows/Rank.png").getImage();
+        Image rank = new ImageIcon("Pentomino/Graphics/Windows/Rank.png").getImage();
         g.drawImage(rank,x,y,w,h,null);
     }
 

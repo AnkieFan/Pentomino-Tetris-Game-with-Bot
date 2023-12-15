@@ -18,7 +18,7 @@ public class RecordDB {
         List<Record> records = new ArrayList<Record>();
         Scanner in;
         try {
-            in = new Scanner(new FileInputStream("records.csv"));
+            in = new Scanner(new FileInputStream("Pentomino/records.csv"));
             while (in.hasNextLine()) {
                 String[] str = in.nextLine().split("\\s+");
                 records.add(new Record(str[0], Integer.parseInt(str[1])));
@@ -35,7 +35,7 @@ public class RecordDB {
      * @param records new records
      */
     public void saveData(List<Record> records) {
-        try (PrintWriter pw = new PrintWriter("records.csv")) {
+        try (PrintWriter pw = new PrintWriter("Pentomino/records.csv")) {
             for (Record record : records) {
                 if ("No Data".equals(record.getName()))
                     continue;

@@ -1,30 +1,42 @@
-import java.util.Arrays;
 import java.util.Stack;
 /**
  * Dancing Links X Algorithm
  * Dancing links X is an algorithm to solve the complete coverage problem.
- * The same with 3D solver
+ * Pentominos of the same type can be reused.
+ * This is originally designed for a 3D Knapsack problem, for example: you have different types of parcels, each with its own set of dimensions (length, width, and height) and values. You also have a truck with its own dimensions. The objective is to determine the optimal way to pack the parcels into the truck to maximize the total value while staying within the truck's size constraints.
  */
 public class DancingLink {
+    public static void main(String[] args) {
+        long startTime = System.currentTimeMillis();
+        DancingLink dancingLink = new DancingLink();
+        System.out.println(dancingLink.dancing());
+        long endTime = System.currentTimeMillis();
+        System.out.println("Running time： " + ((endTime - startTime) / 1000) + "s and " + (endTime - startTime) % 1000 + " ms.");
+    }
+
     public DancingLinkList dancingLinkList;
     private Stack<Node> ans;
     public int[][] ansArray;
-    public static UI ui = new UI(10, 5, 50);
+    static final int recLen = 5; // Length of filled rectangle
+    static final int recWid = 5;// Width of filled rectangle
+    public static UI ui = new UI(recLen, recWid, 50);
 
     public DancingLink() {
         dancingLinkList = new DancingLinkList();
         ans = new Stack<>();
-        ansArray = new int[10][5];
+        ansArray = new int[recLen][recWid];
         for (int i = 0; i < ansArray.length; i++) {
             for (int j = 0; j < ansArray[0].length; j++) {
                 ansArray[i][j] = -1;
             }
         }
         dancingLinkList.show();
-        System.out.println(dancing());
-
     }
 
+    /**
+     * X algorithm with Dancing Links
+     * @return If the answer is found
+     */
     public boolean dancing() {
         if (!canDelete())
             return false;
@@ -55,13 +67,22 @@ public class DancingLink {
                 return true;
             }
         }
+        ui.setState(ansArray);
         return isEmpty();
     }
 
+    /**
+     * If the list is empty, which means their only 'head' in the whole list, the solution is found
+     * @return if the link is empty
+     */
     public boolean isEmpty() {
         return (dancingLinkList.head.right == dancingLinkList.head && dancingLinkList.head.left == dancingLinkList.head);
     }
 
+    /**
+     * Check if the current linked list could still do recursion
+     * @return can do recursion or not
+     */
     public boolean canDelete() {
         if (isEmpty())
             return false;
@@ -77,12 +98,16 @@ public class DancingLink {
         return false;
     }
 
+    /**
+     * Delete the chosen line, release the column heads and delete all the conflicting lines in recursion
+     * @param node a node in chosen line
+     * @param deletedLines the stack to store the conflicting lines
+     */
     public void deleteRelevantLines(Node node, Stack<Node> deletedLines) {
-        //TODO 答案进栈
         Node nodeInRow = node;
         while (true) {
             Node temp = nodeInRow.col;
-            while (true) { //不遍历本行
+            while (true) {
                 temp = temp.down;
                 if (temp == temp.col)
                     break;
@@ -92,16 +117,21 @@ public class DancingLink {
                 deletedLines.push(temp);
             }
             ans.push(nodeInRow);
-            System.out.print("进栈： " + nodeInRow + " ");
+            //System.out.print("Pop in the stack： " + nodeInRow + " ");
             dancingLinkList.releaseLink(nodeInRow.col);
 
             if (nodeInRow.right == node)
                 break;
             nodeInRow = nodeInRow.right;
         }
-        System.out.println();
+        //System.out.println();
     }
 
+    /**
+     * Reconnect the chosen line, the column heads and all the conflicting lines in back-tracking
+     * @param rowControl a node in chosen row
+     * @param deletedLines the stack to store the conflicting lines
+     */
     public void recoverRelevantLines(Node rowControl, Stack<Node> deletedLines) {
         while (!deletedLines.empty()) {
             Node temp = deletedLines.pop();
@@ -110,7 +140,8 @@ public class DancingLink {
 
         Node temp = rowControl;
         while (true) {
-            System.out.print("出栈： " + ans.pop() + " ");
+            Node popedNode = ans.pop();
+            //System.out.print("Pop out of the stack： " + popedNode + " ");
             temp.col.right.left = temp.col;
             temp.col.left.right = temp.col;
 
@@ -118,10 +149,14 @@ public class DancingLink {
             if (temp == rowControl)
                 break;
         }
-        System.out.println();
+        //System.out.println();
     }
 
-
+    /**
+     * Turn the stack to array. This method will pop out all the elements in the Stack
+     * @param ans the answer stack (better to be cloned)
+     * @return  a 2D array of answer
+     */
     public void ansToArray(Stack<Node> ans) {
         setAnsArray();
         int length = ansArray[0].length;
@@ -143,9 +178,15 @@ public class DancingLink {
         }
     }
 
+    /**
+     * Dancing Links data structure
+     * Cross circular doubly linked list
+     * Column: x*y bricks
+     * Row: All the possible placements in this rectangle
+     */
     class DancingLinkList {
-        private final int length = 5;
-        private final int width = 10;
+        private final int length = recWid;
+        private final int width = recLen;
         private final int area = length * width;
         protected Node head = new Node(0, 0, null, -1);
         private int rowNo = 0;
@@ -169,8 +210,8 @@ public class DancingLink {
                 col.col = col;
             }
 
-            PentDB pentDB = new PentDB(length, width);
-            int[][] objects = pentDB.pieces;
+            DLXPentDB DLXPentDB = new DLXPentDB(length, width);
+            int[][] objects = DLXPentDB.pieces;
             linkInit(objects);
         }
 
@@ -202,7 +243,7 @@ public class DancingLink {
                 return;
 
             rowNo++;
-            System.out.println("Row" + rowNo + " Add successfully:" + Arrays.toString(parcel));
+            //System.out.println("Row" + rowNo + " Add successfully:" + Arrays.toString(parcel));
 
             Node col = head.right;
             // The first column node is head, and the first value in parcel[] is id
@@ -263,7 +304,11 @@ public class DancingLink {
                 return 0;
         }
 
-        //把某单个节点插入在某一列的最后
+        /**
+         * Add a node to the end of a column
+         * @param colHead the head of column
+         * @param newNode the node to be added
+         */
         public void addVert(Node colHead, Node newNode) {
             newNode.up = colHead.up;
             newNode.down = colHead;
@@ -271,7 +316,11 @@ public class DancingLink {
             colHead.up = newNode;
         }
 
-        //把某单个节点插入在某一行的最后
+        /**
+         * Add a node to the end of a row
+         * @param rowHead the head of column
+         * @param newNode the node to be added
+         */
         public void addHori(Node rowHead, Node newNode) {
             newNode.right = rowHead;
             newNode.left = rowHead.left;
@@ -279,6 +328,10 @@ public class DancingLink {
             rowHead.left = newNode;
         }
 
+        /**
+         * Release the link of column head
+         * @param col the column head to be released
+         */
         public void releaseLink(Node col) {
             col.left.right = col.right;
             col.right.left = col.left;
@@ -286,7 +339,7 @@ public class DancingLink {
 
         public void deleteLine(Node node) {
             Node temp = node;
-//        System.out.println("Delete: " + node.rowNo);
+        //System.out.println("Delete: " + node.rowNo);
             while (true) {
                 temp.up.down = temp.down;
                 temp.down.up = temp.up;
@@ -296,6 +349,10 @@ public class DancingLink {
             }
         }
 
+        /**
+         * Reconnect the deleted line into the linked list
+         * @param node a node in the line which is deleted
+         */
         public void recoverLine(Node node) {
             Node temp = node;
             while (true) {
@@ -316,17 +373,17 @@ public class DancingLink {
         }
 
         public void show() {
-            System.out.println("遍历链表：");
+            //System.out.println("Loop the list：");
             Node colTemp = head;
             while (true) {
                 Node rowTemp = colTemp;
                 while (true) {
-                    System.out.print(rowTemp);
+                    //System.out.print(rowTemp);
                     if (rowTemp.down == colTemp)
                         break;
                     rowTemp = rowTemp.down;
                 }
-                System.out.println();
+                //System.out.println();
                 if (colTemp.right == head)
                     break;
                 colTemp = colTemp.right;
@@ -334,6 +391,9 @@ public class DancingLink {
         }
     }
 
+    /**
+     * The node in Dancing Linked List
+     */
     class Node {
         protected Node left, right, up, down, col;
         protected int rowNo, colNo;
