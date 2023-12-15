@@ -1,7 +1,7 @@
 # Pentomino Tetris Game with a Bot
 Project 1-1, Maastricht University. Oct 2021 – Jan 2022.
 
-In this project, a (Java) computer program has to be implemented that fills up a given rectangle with given objects
+In this project, a program has to be implemented that fills up a given rectangle with given objects
 (pentominoes). In the second phase, a Tetris game is implemented in which the falling objects are pentominoes. In the
 last phase, an algorithm has to be designed to solve three dimensional knapsack problems.  
 ![Game Overview](imgs/game1.png)
@@ -23,7 +23,7 @@ Run the entry [`Main.java`](/Pentomino/src/pentomino/tetris/game/game/Main.java)
 + DLX for Knapsack problem: [`DancingLinksX.java`](/Pentomino/src/KnapsackProb/DancingLinksX.java)  
 
 ## Announcement
-+ Game UI Design by **Jiaru Zheng**(<a href="mailto:jiaru.zheng@student.uva.nl">jiaru.zheng@student.uva.nl</a>). **Do not use any of the images in [Pentomino/Graphics](/Pentomino/Graphics/) for any purpose without permission.**  
++ Game UI designed by **Jiaru Zheng**(<a href="mailto:jiaru.zheng@student.uva.nl">jiaru.zheng@student.uva.nl</a>). **Do not use any of the images in [Pentomino/Graphics](/Pentomino/Graphics/) for any purpose without permission.**  
 
 + Please note that references to this code may be considered **academic plagiarism** (for UM students).
 
