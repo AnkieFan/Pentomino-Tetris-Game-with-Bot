@@ -6,7 +6,7 @@ In this project, a (Java) computer program has to be implemented that fills up a
 last phase, an algorithm has to be designed to solve three dimensional knapsack problems.  
 ![Game Overview](imgs/game1.png)
 
-## Getting Start
+## Running the code:
 Requirement: JDK 11+  
 
 ### Pentomino Tetris Game:
@@ -27,9 +27,9 @@ Run the entry [`Main.java`](/Pentomino/src/pentomino/tetris/game/game/Main.java)
 
 + Please note that references to this code may be considered **academic plagiarism** (for UM students).
 
-+ Although the project was a group project, all the code in this repository was done independently by myself.  
++ All the code in this repository was done independently by myself.  
 
-## Introduction and Preview
+## Introduction
 Pentominoes are the planar structures that can be obtained by attaching 5 squares of size 1x1 to each other. There are precisely 12 pentominoes and the following picture shows a representation of these.
 ![pentominos](imgs/pentominos.png)
 
