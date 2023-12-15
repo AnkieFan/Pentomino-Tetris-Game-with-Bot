@@ -49,9 +49,9 @@ This algorithm can also be applied to pentominoes filling problems, so its use c
 ## Methodology
 
 ### Pentomino Tetris Game Bot
-+ Pierre Dellacherie Algorithm: Calculate a score out for every possible placement, where score is weighted average of a series of features' score.
-![PDA](imgs/PDA.png)
-![PDA2](imgs/PDA2.png)
++ Pierre Dellacherie Algorithm: Calculate a score out for every possible placement, where score is weighted average of a series of features' score.  
+![PDA](imgs/PDA.png)  
+![PDA2](imgs/PDA2.png)  
 + Particle Swarm Optimization (PSO): Find the best weights $w_n$ for weighting the average of scores.
 
 ### Dancing Link X
