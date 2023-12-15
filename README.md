@@ -11,6 +11,10 @@ Requirement: JDK 11+
 ### Pentomino Tetris Game:
 Run the entry [`Main.java`](/Pentomino/src/pentomino/tetris/game/game/Main.java)  
 
+#### Player instruction(in player mode game): 
++ Press `←` or `→` to move the piece 
++ Press `↑` to rotate the piece
++ Press `↓` to speed falling up
 
 ### 2D solver:
 + Run the entry [`Search.java`](/Pentomino/src/2DSolver/Search.java)  
