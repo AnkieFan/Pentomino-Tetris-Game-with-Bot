@@ -4,6 +4,7 @@ Project 1-1, Maastricht University. Oct 2021 – Jan 2022.
 In this project, a (Java) computer program has to be implemented that fills up a given rectangle with given objects
 (pentominoes). In the second phase, a Tetris game is implemented in which the falling objects are pentominoes. In the
 last phase, an algorithm has to be designed to solve three dimensional knapsack problems.  
+![Game Overview](imgs/game1.png)
 
 ## Getting Start
 Requirement: JDK 11+  
@@ -39,7 +40,6 @@ This is a computer application with a user-friendly interface to play the game o
 
 ![Start page](imgs/start_page.png)
 
-![Game Overview](imgs/game1.png)
 
 
 ### Pentominoes Filling Solver:
@@ -53,7 +53,7 @@ This algorithm can also be applied to pentominoes filling problems, so its use c
 ## Methodology
 
 ### Pentomino Tetris Game Bot
-+ Pierre Dellacherie Algorithm: Calculate a score out for every possible placement, where score is weighted average of a series of features' score.  
++ Pierre Dellacherie Algorithm: Calculate a score out for every possible placement, where score is weighted average of a series of features' scores.  
 ![PDA](imgs/PDA.png)  
 ![PDA2](imgs/PDA2.png)  
 + Particle Swarm Optimization (PSO): Find the best weights $w_n$ for weighting the average of scores.
